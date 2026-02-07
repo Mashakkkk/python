@@ -1,0 +1,75 @@
+from PIL import Image, ImageDraw
+img = Image.new('RGBA', (900, 540), color='#cbdbf4')
+draw = ImageDraw.Draw(img)
+draw.rectangle([0,360,1000, 600], fill='#978759')
+draw.rectangle([0,320,200, 600], fill='#978759')
+draw.rectangle([0,340,320, 600], fill='#978759')
+
+draw.rectangle([440,340,700, 360], fill='#978759')
+draw.rectangle([200,320,280, 340], fill='#4f4f4f')
+draw.rectangle([0,300,600, 320], fill='#4f4f4f')
+draw.rectangle([560,280,600, 300], fill='#4f4f4f')
+draw.rectangle([600,280,620, 300], fill='#978759')
+draw.rectangle([620,280,1000, 300], fill='#4f4f4f')
+draw.rectangle([780,300,1000, 320], fill='#4f4f4f')
+draw.rectangle([880,260,1000, 280], fill='#4f4f4f')
+draw.rectangle([0,280,300, 300], fill='#4f4f4f')
+draw.rectangle([300,280,560, 300], fill='#978759')
+draw.rectangle([0,260,180, 280], fill='#4f4f4f')
+draw.rectangle([180,260,880, 280], fill='#978759')
+draw.rectangle([0,240,100, 260], fill='#4f4f4f')
+draw.rectangle([100,240,1000, 260], fill='#978759')
+draw.rectangle([0,220,40, 240], fill='#4f4f4f')
+draw.rectangle([40,220,1000, 240], fill='#978759')
+draw.rectangle([40,200,1000, 220], fill='#978759')
+draw.rectangle([140,180,1000, 200], fill='#978759')
+draw.rectangle([140,180,240, 200], fill='#4f4f4f')
+draw.rectangle([240,160,340, 180], fill='#4f4f4f')
+draw.rectangle([280,140,380, 160], fill='#4f4f4f')
+draw.rectangle([340,160,1000, 180], fill='#978759')
+draw.rectangle([380,140,400, 160], fill='#978759')
+draw.rectangle([620,140,640, 160], fill='#4f4f4f')
+draw.rectangle([640,140,1000, 160], fill='#978759')
+draw.rectangle([740,120,760, 140], fill='#4f4f4f')
+draw.rectangle([760,120,1000, 140], fill='#978759')
+draw.rectangle([60,80,160, 100], fill="#fefefe")
+draw.rectangle([80,100,120, 120], fill="#fefefe")
+draw.rectangle([220,40,280, 60], fill="#fefefe")
+
+draw.rectangle([560,380,720, 400], fill='#4f4f4f')
+draw.rectangle([540,400,720, 420], fill='#4f4f4f')
+draw.rectangle([520,400,720, 440], fill='#4f4f4f')
+draw.rectangle([500,420,520, 440], fill='#4f4f4f')
+
+draw.rectangle([720,380,740, 500], fill="#fefefe")
+draw.rectangle([740,400,760, 500], fill="#fefefe")
+draw.rectangle([700,440,760, 500], fill="#fefefe")
+
+draw.rectangle([540,380,560, 400], fill="#b7c6d2")
+draw.rectangle([700,420,720, 440], fill="#b7c6d2")
+draw.rectangle([500,440,700, 500], fill="#b7c6d2")
+
+draw.rectangle([540,360,560, 380], fill="#fefefe")
+draw.rectangle([540,360,560, 380], fill="#fefefe")
+draw.rectangle([520,460,580, 480], fill='#4f4f4f')
+draw.rectangle([320,460,500, 480], fill='#4f4f4f')
+draw.rectangle([380,480,500, 500], fill='#4f4f4f')
+draw.rectangle([360,440,420, 460], fill='#4f4f4f')
+ 
+draw.rectangle([520,460,530, 480], fill="#343232")
+draw.rectangle([620,460,640, 500], fill='#4f4f4f')
+draw.rectangle([620,460,630, 500], fill="#343232")
+
+def draw_grid(draw_obj, width, height, step=50, grid_color=(0, 0, 0, 180), 
+              axis_color='red', show_labels=True):
+    for x in range(0, width, step):
+        draw_obj.line([(x, 0), (x, height)], fill=grid_color, width=1)
+        if show_labels and x < width - 20:  #край
+            draw_obj.text((x+2, 5), str(x), fill=(0, 0, 0, 180))
+    for y in range(0, height, step):
+        draw_obj.line([(0, y), (width, y)], fill=grid_color, width=1)
+        if show_labels and y < height - 20:
+            draw_obj.text((2, y + 5), str(y), fill=(0, 0, 0, 180))
+draw_grid(draw, 900, 600, step=20, grid_color=(0, 0, 0, 180))
+img.save('house_grid.png')
+img.show()
