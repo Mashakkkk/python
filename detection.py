@@ -11,7 +11,7 @@ while True:
     ret, frame = cap.read()
     if not ret:
         break
-    frame = cv2.flip(frame, 1) #отражение
+    frame = cv2.flip(frame, 1)
     frame_count += 1
     if frame_count % 3 == 0:
         results = model.predict(
